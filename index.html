@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IRCHA Registration Form</title>
+  <style>
+    :root { --bg:#f6f6f6; --card:#fff; --text:#111; --muted:#666; --border:#ddd; }
+    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:var(--bg); color:var(--text); }
+    .wrap { max-width: 860px; margin: 40px auto; padding: 0 16px; }
+    .card { background:var(--card); border:1px solid var(--border); border-radius: 16px; padding: 22px; box-shadow: 0 6px 24px rgba(0,0,0,.06); }
+    .header { text-align:center; margin-bottom: 18px; }
+    .logo { width: 140px; height: 140px; object-fit: contain; margin: 0 auto 10px; display:block; }
+    h1 { margin: 6px 0 0; font-size: 28px; }
+    .hr { height:1px; background: var(--border); margin: 18px 0; }
+    .grid { display:grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 760px){ .grid { grid-template-columns: 1fr; } }
+    label { display:block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+    input, select, textarea {
+      width:100%; box-sizing:border-box;
+      padding: 12px 12px;
+      border:1px solid var(--border);
+      border-radius: 12px;
+      font-size: 15px;
+      background:#fff;
+      outline: none;
+    }
+    input:focus, select:focus, textarea:focus { border-color:#999; }
+    .req { color:#b00020; font-weight:600; margin-left: 4px; }
+    .section-title { font-weight: 700; margin: 8px 0 10px; }
+    .choices { display:flex; flex-wrap:wrap; gap: 10px; }
+    .chip { display:flex; align-items:center; gap: 8px; padding: 10px 12px; border:1px solid var(--border); border-radius: 999px; background:#fff; }
+    .chip input { width:auto; }
+    .row { margin-bottom: 14px; }
+    .small { font-size: 12.5px; color: var(--muted); line-height: 1.35; }
+    .actions { display:flex; gap: 12px; align-items:center; justify-content:flex-end; margin-top: 14px; }
+    button {
+      border:0; background:#111; color:#fff;
+      padding: 12px 16px; border-radius: 12px;
+      font-size: 15px; cursor:pointer;
+    }
+    button:hover { opacity: .92; }
+    .consent { display:flex; gap: 10px; align-items:flex-start; }
+    .consent input { width:auto; margin-top: 3px; }
+    .hidden { display:none; }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="card">
+
+      <div class="header">
+        <img class="logo" src="logo.png" alt="IRCHA logo" />
+        <h1>IRCHA Registration Form</h1>
+      </div>
+
+      <div class="hr"></div>
+
+      <form action="https://formspree.io/f/XXXXXXXX" method="POST">
+        <input type="hidden" name="_subject" value="New IRCHA registration" />
+        <input type="hidden" name="_redirect" value="thanks.html" />
+
+        <div class="row">
+          <div class="section-title">Membership Type<span class="req">*</span></div>
+          <div class="choices">
+            <label class="chip"><input type="radio" name="membershipType" value="Individual" required> Individual</label>
+            <label class="chip"><input type="radio" name="membershipType" value="Corporate" required> Corporate</label>
+            <label class="chip"><input type="radio" name="membershipType" value="University" required> University</label>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="row">
+            <label>Prefix</label>
+            <select name="prefix">
+              <option value="">Select…</option>
+              <option>Mr.</option><option>Mrs.</option><option>Ms.</option><option>Mx.</option>
+              <option>Miss</option><option>Dr.</option><option>Prof.</option>
+            </select>
+          </div>
+
+          <div class="row">
+            <label>First Name<span class="req">*</span></label>
+            <input name="firstName" required autocomplete="given-name" />
+          </div>
+
+          <div class="row">
+            <label>Middle Name</label>
+            <input name="middleName" autocomplete="additional-name" />
+          </div>
+
+          <div class="row">
+            <label>Last Name<span class="req">*</span></label>
+            <input name="lastName" required autocomplete="family-name" />
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="row">
+            <label>Date of Birth</label>
+            <input type="date" name="dateOfBirth" />
+            <div class="small">Optional. Use yyyy-mm-dd format automatically.</div>
+          </div>
+
+          <div class="row">
+            <label>Gender</label>
+            <select name="gender">
+              <option value="">Select…</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Other / Prefer not to say</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="row">
+            <label>Email Address<span class="req">*</span></label>
+            <input type="email" name="email" required autocomplete="email" />
+          </div>
+
+          <div class="row">
+            <label>Country/Region</label>
+            <input name="country" placeholder="e.g., Greece" autocomplete="country-name" />
+          </div>
+        </div>
+
+        <div class="row">
+          <label>Phone Number<span class="req">*</span></label>
+          <input name="phone" required inputmode="tel" placeholder="+30…" />
+        </div>
+
+        <div class="grid">
+          <div class="row">
+            <label>Employer</label>
+            <input name="employer" maxlength="80" />
+            <div class="small">Up to 80 characters.</div>
+          </div>
+
+          <div class="row">
+            <label>Job Title</label>
+            <input name="jobTitle" maxlength="80" />
+            <div class="small">Up to 80 characters.</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <label>Academic background and main technologic research fields</label>
+          <textarea name="researchFields" rows="4" maxlength="180" placeholder="Up to 180 characters."></textarea>
+        </div>
+
+        <div class="row">
+          <label>Consent<span class="req">*</span></label>
+          <div class="consent">
+            <input type="checkbox" name="consent" value="yes" required />
+            <div class="small">
+              I agree with the by-law of the Association (IRCHA) and consent to be contacted for registration purposes.
+              You can include a link to your PDF here in the text if you want.
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="submit">Submit Registration</button>
+        </div>
+
+        <div class="hidden">
+          <label>Do not fill this field</label>
+          <input name="website" autocomplete="off" />
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
